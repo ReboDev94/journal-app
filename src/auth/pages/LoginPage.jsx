@@ -17,13 +17,15 @@ import {
 } from "../../store/slices/auth/thunks";
 import { AuthLayout } from "../layout/AuthLayout";
 
+const formData = {
+  email: "rebolledo@gmail.com",
+  password: "1234567890",
+};
+
 export const LoginPage = () => {
   const dispatch = useDispatch();
   const { status, errorMessage } = useSelector((state) => state.auth);
-  const { email, password, onInputChange } = useForm({
-    email: "rebolledo@gmail.com",
-    password: "1234567890",
-  });
+  const { email, password, onInputChange } = useForm(formData);
 
   const isAuthenticating = useMemo(() => status === "checking", [status]);
 
